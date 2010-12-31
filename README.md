@@ -1,4 +1,4 @@
-# Cookie Javascript Injection
+# Cookie Javascript Injection Sidejacking
 
 This software sniffs any interface for cookies, and generates javascript code that can be injected into any browser, by pasting it into the URL bar.
 
