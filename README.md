@@ -8,7 +8,7 @@ To run the cookieJsInjection open a shell (e.g., bash) and execute the following
 
 `./cookieJsInjection.py IFACE`
 
-Where `IFACE` represents the network interface you wish to sniff on. (e.g. eth0, wlan0, etc). 
+Where `IFACE` represents the network interface you wish to sniff on (e.g. eth0, wlan0, etc). 
 
 If you supply the flag `-f`, it will only output facebook cookies, keeping track of the profiles captured in the session, and eliminating duplicate entries:
 
