@@ -2,7 +2,7 @@
 
 This software sniffs any interface for cookies, and generates javascript code that can be injected into any browser, by pasting it into the URL bar.
 
-It comes accompanied by a script: `OSx10.6_monitorMode.py`, that is able to use the `airport sniff` feature present in OS X 10.6+, allowing the wireless device to be put in monitor mode.
+It comes accompanied by a script: `OSx10.6_monitorMode.py`, that is able to use the `airport sniff` feature present in OS X 10.6+, allowing the wireless device to be put in monitor mode. We are, thus, able to retrieve any cookie sent on the chosen wireless channel.
 
 # Usage
 
