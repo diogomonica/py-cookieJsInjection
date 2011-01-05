@@ -12,9 +12,9 @@ To run the cookieJsInjection open a shell (e.g., bash) and execute the following
 
 Where `IFACE` represents the network interface you wish to sniff on (e.g. eth0, wlan0, etc). 
 
-If you supply the flag `-f`, it will only output facebook cookies, keeping track of the profiles captured in the session, and eliminating duplicate entries:
+If you supply the flag `-facebook`, it will only output facebook cookies, keeping track of the profiles captured in the session, and eliminating duplicate entries:
 
-`./cookieJsInjection.py IFACE -f`
+`./cookieJsInjection.py IFACE -facebook`
 
 If you wish to run `cookieJsInjection` on a wireless device, and you are currently running OS X 10.6+, use `OSx10.6_monitorMode.py`:
 
