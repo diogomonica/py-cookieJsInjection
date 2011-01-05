@@ -1,9 +1,10 @@
-# A Simple sidejacking tool, using javascript cookie injection.
+A Simple sidejacking tool, using javascript cookie injection.
+########
 
 This software sniffs any interface for cookies, and generates javascript code that can be injected into any browser, by pasting it into the URL bar.
 
-# Usage
-
+Usage
+--------
 To run the cookieJsInjection open a shell (e.g., bash) and execute the following command (cookieJsInjection requires scapy to run - http://www.secdev.org/projects/scapy/):
 
 `./cookieJsInjection.py IFACE`
@@ -14,7 +15,8 @@ If you supply the flag `-f`, it will only output facebook cookies, keeping track
 
 `./cookieJsInjection.py IFACE -f`
 
-# Example of Facebook sidejacking
+Example of Facebook sidejacking
+--------
 
 1 - Run cookieJsInjection and wait for cookies to appear
 
@@ -29,5 +31,6 @@ If you supply the flag `-f`, it will only output facebook cookies, keeping track
 
 5 - Go to facebook.com
                                        
-# Background
+Background
+--------
 More information on sidejacking - http://en.wikipedia.org/wiki/Session_hijacking
