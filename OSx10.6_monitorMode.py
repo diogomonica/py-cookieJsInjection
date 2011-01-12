@@ -15,7 +15,11 @@ class scanCookies ( threading.Thread ):
 		dirList=os.listdir(path)
 		for fileName in dirList:
 			if "airportSniff" in fileName:
-				sniff(offline=path+fileName,filter="tcp port 80",prn=sniffCookies)
+				try:
+					sniff(offline=path+fileName,filter="tcp port 80",prn=sniffCookies)
+				except NameError:
+					print "[-] No data found on pcap"
+					pass
 				os.remove(path+fileName)
 						
 def isRoot():
@@ -36,7 +40,7 @@ if __name__ == "__main__":
 		print "[-] Your have to be root to put airport into monitor mode"
 		sys.exit(0)
 
-	print "[*] Starting scan on channel %s" % channel	
+	print "[*] Starting scan on channel %s" % channel
 	while(True):			
 		p = Popen("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport " +"sniff " + channel, shell=True)
 		time.sleep(SLEEP_TIME)
