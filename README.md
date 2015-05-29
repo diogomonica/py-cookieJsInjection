@@ -36,6 +36,7 @@ Remember to select the appropriate channel (in the example above, channel 9 was 
 
 # Example of Facebook sidejacking
 
+*UPDATE*: This tool no longer works to sniff Facebook cookies since facebook now uses TLS for all of their traffic and HSTS headers to prevent SSLStrip attacks.
 
 1 - Run cookieJsInjection and wait for cookies to appear
 
